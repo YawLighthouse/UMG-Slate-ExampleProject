@@ -37,13 +37,13 @@ public:
 	/** Builds the underlying slot for the slate border. */	
 	void BuildSlot(TSharedRef<SExampleBorder> InBorder);
 
-	/** This is an inherited function that is intended to be overriden so as to tell slate widgets to reset. */
+	/** This is an inherited function that is intended to be overriden so as to destroy the slate widget and reset our cached pointer. */
 	virtual void ReleaseSlateResources(bool bReleaseChildren) override;
 
 #if WITH_EDITOR
 
 	// UObject interface	
-	/** This is a regular UObject function that fires when a property is changed */
+	/** This is a regular UObject function that fires when a property(that is visible with reflection via UPROPERTY macro) is changed */
 	virtual void PostEditChangeProperty(struct FPropertyChangedEvent& PropertyChangedEvent) override;
 	// End of UObject interface
 
