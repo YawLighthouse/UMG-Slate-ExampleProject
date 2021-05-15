@@ -8,16 +8,19 @@
 
 void UExampleBorderSlot::SetPadding(FMargin InPadding)
 {
+	// Get the Border UWidget and set its padding, pretty much routing the function call to the actual widget rather than handling it within the slot
 	CastChecked<UExampleBorder>(Parent)->SetPadding(InPadding);
 }
 
 void UExampleBorderSlot::SetHorizontalAlignment(EHorizontalAlignment InHorizontalAlignment)
 {
+	// Get the Border UWidget and set its horizontal alignment, pretty much routing the function call to the actual widget rather than handling it within the slot
 	CastChecked<UExampleBorder>(Parent)->SetHorizontalAlignment(InHorizontalAlignment);
 }
 
 void UExampleBorderSlot::SetVerticalAlignment(EVerticalAlignment InVerticalAlignment)
 {
+	// Get the Border UWidget and set its vertical alignment, pretty much routing the function call to the actual widget rather than handling it within the slot
 	CastChecked<UExampleBorder>(Parent)->SetVerticalAlignment(InVerticalAlignment);
 }
 
@@ -35,6 +38,7 @@ void UExampleBorderSlot::SynchronizeProperties()
 
 void UExampleBorderSlot::BuildSlot(TSharedRef<SExampleBorder> InBorder)
 {
+	// Cache(save) our slate border widget
 	Border = InBorder;
 
 	// Border.Pin() is basically getting the actual pointer from the weak_ptr template
@@ -49,8 +53,10 @@ void UExampleBorderSlot::BuildSlot(TSharedRef<SExampleBorder> InBorder)
 
 void UExampleBorderSlot::ReleaseSlateResources(bool bReleaseChildren)
 {
+	// This really doesn't do anything but its good practice to call the parent version incase that changes
 	Super::ReleaseSlateResources(bReleaseChildren);
 
+	// Tell the weak ptr to either handle destroying the border or reset its pointer to null
 	Border.Reset();
 }
 
