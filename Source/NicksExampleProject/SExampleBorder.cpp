@@ -6,7 +6,10 @@
 #include "SlateOptMacros.h"
 
 // This is a newer macro that is meant to help build the project faster
-// so you won't see this in most regular widgets because they haven't been updated in a long time
+// so you won't see this in most regular widgets because they haven't been updated in a long time.
+// What this macro specifically does, is it indicates to the compiler that we do not want it to attempt to optimize this code block
+// apparently this macro should be placed on large slate widget declarations as the heavy nesting can cause the compiler to spend a lot of time
+// attempting to optimize the single expression
 BEGIN_SLATE_FUNCTION_BUILD_OPTIMIZATION
 
 static FName SExampleBorderTypeName("SExampleBorder");
