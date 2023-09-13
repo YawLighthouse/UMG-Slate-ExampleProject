@@ -18,8 +18,6 @@ public:
 		: _HAlign( HAlign_Fill )
     	, _VAlign( VAlign_Fill )
     	, _Padding( FMargin(2.0f) )
-		// FCoreStyle is only used for in engine assets, we do this here because we want to recreate our brush
-		// in normal projects do not do this!
 		, _BorderImage( FCoreStyle::Get().GetBrush( "Border" ) )
         , _ContentScale( FVector2D(1,1) )
         , _DesiredSizeScale( FVector2D(1,1) )
